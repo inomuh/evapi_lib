@@ -38,24 +38,24 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: libevarobot_low.so
+all: libevapi_lib.so
 
 # Tool invocations
-libevarobot_low.so: $(OBJS) $(USER_OBJS)
+libevapi_lib.so: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross GCC Archiver'
-	arm-linux-gnueabihf-ar -r  "libevarobot_low.so" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-linux-gnueabihf-ar -r  "libevapi_lib.so" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
 
 # Other Targets
 clean:
-	-$(RM) $(C++_DEPS)$(OBJS)$(C_DEPS)$(CC_DEPS)$(ARCHIVES)$(CPP_DEPS)$(CXX_DEPS)$(C_UPPER_DEPS) libevarobot_low.so
+	-$(RM) $(C++_DEPS)$(OBJS)$(C_DEPS)$(CC_DEPS)$(ARCHIVES)$(CPP_DEPS)$(CXX_DEPS)$(C_UPPER_DEPS) libevapi_lib.so
 	-@echo ' '
 
 post-build:
-	-scp libevarobot_low.so pi@192.168.3.173:~/evarobot_library; scp -r /home/makcakoca/workspace/evarobot_low/include pi@192.168.3.173:~/evarobot_library
+	-scp libevarobot_low.so pi@192.168.3.10:~/evarobot_library; scp -r /home/makcakoca/workspace/evapi_lib/include pi@192.168.3.10:~/evarobot_library
 	-@echo ' '
 
 .PHONY: all clean dependents

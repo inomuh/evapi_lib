@@ -58,11 +58,6 @@ IMPWM::IMPWM()
   ConfigPWMPin(); //configure GPIO18 to ALT15 (PWM output)
   ConfigPWM();   // configure PWM1
 
-  this->i_direction0 = 1;
-  this->i_dirLast0 = 1;
-  this->i_direction1 = 1;
-  this->i_dirLast1 = 1;
-
 }
 
 /***********************************************************************
@@ -88,10 +83,6 @@ IMPWM::IMPWM(double d_Hz, unsigned int u_i_counts, double d_duty,  int i_m)
   this->p_v_u_gpio = MapRegisterAddres(GPIO_BASE);
   this->p_v_u_pwm = MapRegisterAddres(PWM_BASE);
 
-  this->i_direction0 = 1;
-  this->i_dirLast0 = 1;
-  this->i_direction1 = 1;
-  this->i_dirLast1 = 1;
 
    if( (u_i_counts < 0) || (u_i_counts > UINT_MAX) ) {
    printf("counts value must be between 0-%d\n",UINT_MAX);
@@ -131,7 +122,7 @@ IMPWM::IMPWM(double d_Hz, unsigned int u_i_counts, double d_duty,  int i_m)
  ***********************************************************************/
 IMPWM::~IMPWM()
 {
-
+	printf("pwm kapatiliyor\n");
 
 	//lets put the PWM peripheral registers in their original state
 	*(p_v_u_pwm + PWM_CTL) = 0;
@@ -175,22 +166,6 @@ IMPWM::~IMPWM()
 	}
 }
 
-void IMPWM::SetDirection(int i_pwm_mod, int i_direction)
-{
-	if(i_pwm_mod == 0)
-		this->i_direction0 = i_direction;
-	else
-		this->i_direction1 = i_direction;
-
-	if(i_dirLast0 != i_direction0 || i_dirLast1 != i_direction1)
-	{
-		ConfigPWMPin();
-	}
-
-	i_dirLast0 = i_direction0;
-	i_dirLast1 = i_direction1;
-
-}
 
 /***********************************************************************
  * unsigned int rpiPWM::setFrequency(const double &hz)
@@ -381,7 +356,7 @@ unsigned int IMPWM::SetMode(const  int &c_i_m)
 	{
 		this->i_mode = c_i_m;
 		SetDutyCycleForce(this->d_dutyCycle, this->i_mode, 0);
-//		setDutyCycleForce(this->d_dutyCycle, this->i_mode, 1);
+		SetDutyCycleForce(this->d_dutyCycle, this->i_mode, 1);
 	 }
 
 	return u_i_return_value;
@@ -478,44 +453,20 @@ void IMPWM::ConfigPWMPin()
 //#define GPIO_PULLCLK0 *(gpio+38) // Pull up/pull down clock
 
 	// PWM0
-	if(i_direction0 == 0)
-	{
-		// GPIO18 - ALT5 Config
-		*(this->p_v_u_gpio + 1) &= ~(7 << 24);
-		*(this->p_v_u_gpio + 1) |= (2 << 24);
 
-		*(this->p_v_u_gpio + 1) &= ~(7 << 6);
-		printf("GPIO18\n");
-	}
-	else
-	{
-		// GPIO12 - ALT0 Config
-		*(this->p_v_u_gpio+1) &= ~(7 << 6);
-		*(this->p_v_u_gpio+1) |= (4 << 6);
+	// GPIO18 - ALT5 Config
+	*(this->p_v_u_gpio + 1) &= ~(7 << 24);
+	*(this->p_v_u_gpio + 1) |= (2 << 24);
 
-		 *(this->p_v_u_gpio+1) &= ~(7 << 24);
-		printf("GPIO12\n");
-	}
+	*(this->p_v_u_gpio + 1) &= ~(7 << 6);
+//	printf("GPIO18\n");
 
-	// PWM1
-	if(i_direction1 == 0)
-	{
-		// GPIO13 - ALT0 Config
-		*(this->p_v_u_gpio+1) &= ~(7 << 9);
-		*(this->p_v_u_gpio+1) |= (4 << 9);
+	// GPIO13 - ALT0 Config
+	*(this->p_v_u_gpio+1) &= ~(7 << 9);
+	*(this->p_v_u_gpio+1) |= (4 << 9);
 
-		*(this->p_v_u_gpio+1) &= ~(7 << 27);
-		printf("GPIO13\n");
-	}
-	else
-	{
-		// GPIO19 - ALT5 Config
-		*(this->p_v_u_gpio+1) &= ~(7 << 27);
-		*(this->p_v_u_gpio+1) |= (2 << 27);
-
-		*(this->p_v_u_gpio+1) &= ~(7 << 9);
-		printf("GPIO19\n");
-	}
+	*(this->p_v_u_gpio+1) &= ~(7 << 27);
+//	printf("GPIO13\n");
 
 }
 

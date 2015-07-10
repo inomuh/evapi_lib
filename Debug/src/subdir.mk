@@ -5,6 +5,7 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../src/IMADC.cpp \
+../src/IMEIO.cpp \
 ../src/IMGPIO.cpp \
 ../src/IMI2C.cpp \
 ../src/IMPWM.cpp \
@@ -14,6 +15,7 @@ CPP_SRCS += \
 
 OBJS += \
 ./src/IMADC.o \
+./src/IMEIO.o \
 ./src/IMGPIO.o \
 ./src/IMI2C.o \
 ./src/IMPWM.o \
@@ -23,6 +25,7 @@ OBJS += \
 
 CPP_DEPS += \
 ./src/IMADC.d \
+./src/IMEIO.d \
 ./src/IMGPIO.d \
 ./src/IMI2C.d \
 ./src/IMPWM.d \

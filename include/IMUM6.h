@@ -1,9 +1,23 @@
-/*
- * IMIMU_UM6.h
+#ifdef English_dox
+/**
+ * \file   IMI2C.h
+ * \author Mehmet Akcakoca (mehmet.akcakoca@inovasyonmuhendislik.com)
+ * \date   Mar, 2015
+ * \brief
+ * \details
  *
- *  Created on: Mar 24, 2015
- *      Author: makcakoca
  */
+#endif
+#ifdef Turkish_dox
+/**
+ * \file   IMI2C.h
+ * \author Mehmet Akcakoca (mehmet.akcakoca@inovasyonmuhendislik.com)
+ * \date   Mar, 2015
+ * \brief
+ * \details
+ *
+ */
+#endif
 
 #ifndef INCLUDE_IMUM6_H_
 #define INCLUDE_IMUM6_H_
@@ -36,51 +50,604 @@ public:
 		char c_checksum[2];
 	}um6_data;
 
+	#ifdef English_dox
+	//! Constructor
+	/**
+	 * \param
+	 * \param
+	 */
+	#endif
+
+	#ifdef Turkish_dox
+	//! Constructor
+	/**
+	 * \param
+	 * \param
+	 */
+	#endif
 	IMUM6(IMSerial * p_imserial);
 
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	bool isReceivedData(char * p_c_start_bits, int i_length);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	bool isCommandCompleted() const;
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	bool CheckData();
 
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	void GetFWVersion();
 
 	// UM6_COMMUNICATION Register (0x00) Functions
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetBaudRate(long l_baudrate);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetFrequency(int i_frequency);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetGPSBaudrate(long l_baudrate);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetDetailedSatelliteStatusTrasmission(bool b_status);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetSatelliteSummaryTrasmission(bool b_status);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetGPSCourseVelocityTrasmission(bool b_status);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetGPSRelativePositionTrasmission(bool b_status);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetGPSPositionTransmission(bool b_status);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetTemperatureMeasurementTransmission(bool b_status);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetCovarianceMatrixTransmission(bool b_status);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetEulerAngleTransmission(bool b_status);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetQuaternionTransmission(bool b_status);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetProcessedMagnetometerTransmission(bool b_status);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetProcessedAccelerometerTransmission(bool b_status);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetProcessedGyroTransmission(bool b_status);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetRawMagnetometerTransmission(bool b_status);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetRawAccelerometerTransmission(bool b_status);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetRawGyroTransmission(bool b_status);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetMode(bool b_mode); // broadcast mode: true, listen mode: false
 
+
 	// UM6_MISC_CONFIG Register (0x01) Functions
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetPPSTiming(bool b_status);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetQuaterninonState(bool b_status);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetGyroCalibration(bool b_status);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetEKFAccelerometerUpdates(bool b_status);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetEKFMagnetometerUpdates(bool b_status);
 
-
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	bool GetRawData(IMUM6::UM6_DATA & data);
 
 //	void PrintLogData();
 
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int ProcessData(vector<int> & T_i_registers);
 
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int32_t GetDataRegister(int i_register) const;
 
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetCommand(int i_register);
 
 	struct REGISTERS
@@ -228,10 +795,58 @@ public:
 
 private:
 
-
-
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	bool ParseData();
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	void StoreData();
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	void SetRegisterPinValue(
 			int32_t & i_register,
 			int i_pin_no,
@@ -239,11 +854,94 @@ private:
 			char c_value
 			);
 
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetRegister32bitValue(int i_register, float f_data);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetRegister32bitValue(int i_register, int32_t i_data);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetRegister16bitValue(int i_register, int16_t i_data);
+
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int SetRegister16bitValue(int i_register, int16_t * p_i_data);
 
+	#ifdef English_dox
+	//! Brief
+	/**
+	 * Detailed
+	 * \param
+	 * \return
+	 */
+	#endif
+	#ifdef Turkish_dox
+	//! Kısa bilgi
+	/**
+	 * Detaylı bilgi
+	 * \param i_channel_no
+	 * \return
+	 */
+	#endif
 	int CalculateChecksum();
 
 	int32_t i_data_registers[85]; // 0x55 - 0xA9

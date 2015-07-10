@@ -30,22 +30,24 @@ const string IMGPIO::GPIO0 = "23";
 const string IMGPIO::GPIO1 = "24";
 const string IMGPIO::GPIO2 = "25";
 const string IMGPIO::GPIO3 = "7";
-//	const string IMGPIO::GPIO4 = "23";
+const string IMGPIO::GPIO4 = "1";
 const string IMGPIO::GPIO5 = "16";
 const string IMGPIO::GPIO6 = "20";
 const string IMGPIO::GPIO7 = "21";
 const string IMGPIO::GPIO8 = "26";
 const string IMGPIO::GPIO9 = "6";
 const string IMGPIO::GPIO10 = "5";
-//	const string IMGPIO::GPIO11 = "23";
+const string IMGPIO::GPIO11 = "0";
+const string IMGPIO::GPIO12 = "12";
+const string IMGPIO::GPIO13 = "19";
 
 
 IMGPIO::IMGPIO():i_value_fd(-1),i_direction_fd(-1),i_export_fd(-1),
 i_unexport_fd(-1),i_edge_fd(-1),str_pin_number("23")
 {
 //	b_exit_signal = false;
-	signal(SIGINT, CatchSignal);
-	str_interrupt_mode = "";
+//	signal(SIGINT, CatchSignal);
+//	str_interrupt_mode = "";
 	this->ExportGpio();
 }
 
@@ -57,14 +59,15 @@ i_direction_fd(-1),i_export_fd(-1),i_unexport_fd(-1),i_edge_fd(-1),
 str_pin_number(_str_pin_number)
 {
 //	b_exit_signal = false;
-	signal(SIGINT, CatchSignal);
-	str_interrupt_mode = "";
+//	signal(SIGINT, CatchSignal);
+//	str_interrupt_mode = "";
 	this->ExportGpio();
 }
 
 
 IMGPIO::~IMGPIO()
 {
+	printf("gpio kapatiliyor.\n");
 	this->UnexportGpio();
 }
 
@@ -86,6 +89,7 @@ int IMGPIO::ExportGpio()
         exit(1);
 	}
 
+//	printf("length: %d, sizeof: %d\n", this->str_pin_number.length(), sizeof(this->str_pin_number.c_str()));
 
 	i_status_value = write(this->i_export_fd, this->str_pin_number.c_str(),
 								this->str_pin_number.length());
@@ -303,14 +307,14 @@ string IMGPIO::GetPinNumber() const
     \param _callback_function Callback fonksiyonu
 	\param void *p Callback fonksiyonunun bulundugu sınıfın nesnesini isaret etmektedir.
 */
-void IMGPIO::SetCallback(CallbackFunctionPtr _callback_function, void *p)
+/*void IMGPIO::SetCallback(CallbackFunctionPtr _callback_function, void *p)
 {
 	callback_function = _callback_function;
 	p_v_callback_pointer = p;
-}
+}*/
 
 
-int IMGPIO::SetInterruptMode(string str_int_mode)
+/*int IMGPIO::SetInterruptMode(string str_int_mode)
 {
 
 	int i_status_value = -1;
@@ -357,7 +361,8 @@ int IMGPIO::SetInterruptMode(string str_int_mode)
 	return i_status_value;
 
 }
-
+*/
+/*
 int IMGPIO::PollGpio()
 {
 
@@ -380,8 +385,8 @@ int IMGPIO::PollGpio()
 		exit(1);
 	}
 
-	while(g_b_exit_signal == false)
-	{
+	//while(g_b_exit_signal == false)
+	//{
 
 		if (-1 != i_value_fd)
 		{
@@ -390,12 +395,12 @@ int IMGPIO::PollGpio()
 			poll_gpio.fd = i_value_fd;
 			poll_gpio.events = POLLPRI|POLLERR;
 
-			int rv = poll(&poll_gpio, 1, -1);    /* block endlessly */
+			int rv = poll(&poll_gpio, 1, -1);    // block endlessly
 			if (rv > 0)
 			{
 				if (poll_gpio.revents & POLLPRI)
 				{
-					/* IRQ happened */
+					// IRQ happened
 					char buf[2];
 					lseek(poll_gpio.fd, 0, SEEK_SET);
 					// int n = read(poll_123.fd, buf, sizeof(buf));
@@ -409,33 +414,33 @@ int IMGPIO::PollGpio()
 						if(gpio_val == 0 && str_interrupt_mode.compare(FALLING) == 0)
 						{
 							cout << "FALLING INTERRUPT" << endl;
-							callback_function(p_v_callback_pointer, gpio_val);
+							//callback_function(p_v_callback_pointer, gpio_val);
 						}
 						else if(gpio_val == 1 && str_interrupt_mode.compare(RISING) == 0)
 						{
 							cout << "RISING INTERRUPT" << endl;
-							callback_function(p_v_callback_pointer, gpio_val);
+							//callback_function(p_v_callback_pointer, gpio_val);
 						}
 						else if(str_interrupt_mode.compare(BOTH) == 0)
 						{
 							cout << "BOTH INTERRUPT" << endl;
-							callback_function(p_v_callback_pointer, gpio_val);
+							//callback_function(p_v_callback_pointer, gpio_val);
 						}
 					}
 				}
 			}
 		}
-	}
+	//}
 
 	return i_status_value;
 }
-
-void CatchSignal(int i_sig)
+*/
+/*void CatchSignal(int i_sig)
 {
         signal(SIGINT, CatchSignal);
         g_b_exit_signal = true;
         printf("Sinyal yakalandi...\n");
-}
+}*/
 
 
 

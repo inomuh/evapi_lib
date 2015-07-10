@@ -29,11 +29,10 @@
 IMADC::IMADC(IMSPI * p_imspi, int i_adc_bits)
 {
 	this->p_imspi = p_imspi;
-	this->i_adc_bits = i_adc_bits;
 
 	this->i_mask = 0;
 
-	for(int i = 8; i < this->i_adc_bits; i++)
+	for(int i = 8; i < i_adc_bits; i++)
 	{
 		this->i_mask |= (0b1 << i);
 	}
@@ -44,13 +43,18 @@ int IMADC::ReadChannel(int i_channel_no)
 	int i_value = 0;
 	unsigned char u_c_data[3];
 
-	u_c_data[0] = 0x06 | ((i_channel_no & 0x07) >> 7);
-	u_c_data[1] = ((i_channel_no & 0x07) << 6);
+
+	unsigned char u_c_dummy;
+
+	u_c_dummy = i_channel_no & 0x07;
+
+	u_c_data[0] = 0x06 | (u_c_dummy >> 2);
+	u_c_data[1] = (u_c_dummy << 6);
 	u_c_data[2] = 0x00;
 
 
-
-/*	u_c_data[0] = 1;  //  first byte transmitted -> start bit
+/*
+	u_c_data[0] = 1;  //  first byte transmitted -> start bit
 	u_c_data[1] = 0b10000000 |( ((i_channel_no & 7) << 4)); // second byte transmitted -> (SGL/DIF = 1, D2=D1=D0=0)
 	u_c_data[2] = 0; // third byte transmitted....don't care
 */
@@ -58,6 +62,7 @@ int IMADC::ReadChannel(int i_channel_no)
 
 
 	//sleep(1);
+
 
     i_value = (u_c_data[1]<< 8) & this->i_mask; //0b111100000000; //0b1100000000;  //merge data[1] & data[2] to get result
     i_value |=  (u_c_data[2] & 0xff);
